@@ -1,5 +1,6 @@
 """
-This takes a 
+This takes a the ACM signup form excel spreadsheet and translates it into CSV that is importable 
+into ACM website. 
 
 """
 import pandas
