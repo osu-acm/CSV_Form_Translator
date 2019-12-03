@@ -15,7 +15,7 @@ for index in range(0, members["Name"].count()):
     temp = members["Name"][index].split()
     members["Name"][index]  = temp[0]
     try:
-        members["LastName"][index] = temp[1]
+        members["LastName"][index] = temp[-1]
     except:
         members["LastName"][index] = "NA"
 
