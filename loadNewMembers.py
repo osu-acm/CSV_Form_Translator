@@ -11,13 +11,16 @@ columns_to_be_dropped = ["Have you signed up on the SLI page?","Timestamp","Ente
 members = pandas.read_csv('ACM.csv').drop(columns=columns_to_be_dropped)
 members['LastName'] = 'NA'
 
-for index in range(0, members["Name"].count()):
-    temp = members["Name"][index].split()
-    members["Name"][index]  = temp[0]
+for index, member in members.iterrows():
+    temp = member["Name"].split()
     try:
-        members["LastName"][index] = temp[-1]
+        member["Name"]  = temp[0]
     except:
-        members["LastName"][index] = "NA"
+        raise Exception("User with email {} doens't have a first name.".format(member["Email Address"]))
+    try:
+        member["LastName"] = temp[-1]
+    except:
+        member["LastName"] = "NA"
 
 
 # Re-arrange for the ACM website format
